@@ -239,31 +239,31 @@ export const couponVerification = async (req, res) => {
   }
 }
 
-// export const getPaymentId = async(req,res)=>{
-//   const {paymentId} = req.params;
-//   try {
-//     const data = await Payment.findOne({paymentId:paymentId});
-//     if(data)
-//     {
-//       res.status(200).json({
-//         success:true,
-//         paymentId:data.paymentId
-//       })
-//     }
-//     else{
-//       res.status(400).json({
-//         success:false,
-//         message:"no payment record found"
-//       })
-//     }
-//   } catch (error) {
-//     console.log("error while fetching user paymentId",error);
-//     res.status(500).json({
-//       success:false,
-//       message:"internal server error",
-//       error
-//     })
-//   }
-// }
+export const getPaymentId = async(req,res)=>{
+  const {emailId} = req.params;
+  try {
+    const data = await Payment.findOne({emailId:emailId});
+    if(data)
+    {
+      res.status(200).json({
+        success:true,
+        paymentId:data.paymentId
+      })
+    }
+    else{
+      res.status(400).json({
+        success:false,
+        message:"no payment record found"
+      })
+    }
+  } catch (error) {
+    console.log("error while fetching user paymentId",error);
+    res.status(500).json({
+      success:false,
+      message:"internal server error",
+      error
+    })
+  }
+}
 
 
