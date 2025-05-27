@@ -8,110 +8,115 @@ import path from 'path';
 import { otpModal } from "../model/otpModel.js";
 import crypto from "crypto";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+//const __filename = fileURLToPath(import.meta.url);
+//const __dirname = path.dirname(__filename);
 configDotenv();
 
 export const sendOtpEmail = async (emailId,otp) => {
 
-    const html = `<div
+    const html = `    <div
+  style="
+    max-width: 650px;
+    margin: auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: #000000;
+    background: #a5ddff;
+  "
+>
+  <!-- Email Header -->
+  <div style="text-align: center;">
+    <img
+      src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1743838131332Logo%20with%20name.png?alt=media&token=30ed7206-368a-4c78-8c9a-8a0d029dba32"
+      style="max-width: 120px; margin-bottom: 10px;"
+      alt="Edubuk Logo"
+    />
+  </div>
+
+  <img
+    src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1748258206896AdobeStock_1032578995.jpg?alt=media&token=dc080a82-89f4-420e-9b66-157267023e8c"
+    style="max-width: 100%; display: block;"
+    alt="Edubuk Banner"
+  />
+
+  <!-- Email Content -->
+  <div style="padding: 20px;">
+    <p
       style="
-        max-width: 650px;
-        margin: auto;
-        font-family: Arial, sans-serif;
-        line-height: 1.5;
-        color: #000000;
-        background: #a5ddff;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: linear-gradient(to right, #03257e, #006666, #f14419);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       "
     >
-      <!-- Email Header -->
-      <div style="text-align: center">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1743838131332Logo%20with%20name.png?alt=media&token=30ed7206-368a-4c78-8c9a-8a0d029dba32"
-          style="max-width: 120px; margin-bottom: 10px"
-        />
-      </div>
-      <img
-        src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1747038548587emailImg.jpg?alt=media&token=3f8a14c9-10f5-4fa7-8a1c-eaa31cd6147b"
-        style="max-width: 650px"
-      />
+      SECURITY CODE FOR VERIFICATION - EDUBUK
+    </p>
 
-      <!-- Email Content -->
-      <div style="padding: 20px">
-        <p
-          style="
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(to right, #03257e, #006666, #f14419);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-          "
-        >
-          SECURITY CODE FOR VERIFICATION - EDUBUK
-        </p>
-        <p>
-          Greetings from EDUBUK team! <br /><br />
+    <p>
+      Greetings from EDUBUK team! <br /><br />
+      Dear <strong>${emailId}</strong>,<br /><br />
+      Your security code for authentication is: <br /><br />
+    </p>
 
-          Dear <strong>${emailId}</strong>,<br /><br />
-          Your security code for authentication is : <br /><br />
-        </p>
-        <p style="color: #03257e; font-size: 25px; font-weight: bold">
-          OTP: [${otp}]
-        </p>
-        <!-- Support Info -->
-        <p style="margin-top: 20px; padding-top: 15px">
-          This code is valid for the next 10 minutes only.<br /><br />
-          Never share this code with anyone as we never ask for OTP.
-        </p>
-        <p>
-          If you have not requested this code, please contact us immediately at
-          <strong>support@edubuk.com</strong> or call
-          <strong>+91 9250411261</strong>.
-        </p>
-      </div>
-      <!-- Signature -->
-      <div
-        style="
-          max-width: 650px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          color: #ffffff;
-          background-color: #03257e;
-          text-align: center;
-          gap: 10px;
-        "
-      >
-        <p>Best Wishes,<br /><strong>Team Edubuk</strong></p>
+    <p style="color: #03257e; font-size: 25px; font-weight: bold;">
+      OTP: [${otp}]
+    </p>
 
-        <div
-          style="
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            background-color: #006666;
-            width: 100%;
-          "
-        >
-          <p>💻 edubukeseal.org</p>
-          <p>📧 support@edubuk.com</p>
-          <p>📞 +91 9250411261</p>
-        </div>
-        <!-- Footer -->
-        <footer style="font-size: 12px; text-align: center">
-          <p>© 2025 EDUBUK. All rights reserved.</p>
-        </footer>
-      </div>
-    </div>`;
+    <!-- Support Info -->
+    <p style="margin-top: 20px; padding-top: 15px;">
+      This code is valid for the next 10 minutes only.<br /><br />
+      Never share this code with anyone as we never ask for OTP.
+    </p>
+
+    <p>
+      If you have not requested this code, please contact us immediately at
+      <strong>support@edubuk.com</strong> or call
+      <strong>+91 9250411261</strong>.
+    </p>
+  </div>
+
+  <!-- Signature -->
+  <div
+    style="
+      max-width: 650px;
+      color: #ffffff;
+      background-color: #03257e;
+      text-align: center;
+      gap: 10px;
+      padding: 20px 0;
+      color: #ffffff;
+    "
+  >
+    <p>Best Wishes,<br /><strong>Team Edubuk</strong></p>
+
+    <p
+      style="
+        align-items: center;
+        background-color: #006666;
+        width: 100%;
+        padding: 10px 0;
+        color: #ffffff;
+      "
+    >
+    💻 edubukeseal.org | 📧 support@edubuk.com | 📞 +91 9250411261</p>
+</p>
+
+    <!-- Footer -->
+    <footer style="font-size: 12px; text-align: center;">
+      <p>© 2025 EDUBUK. All rights reserved.</p>
+    </footer>
+  </div>
+</div>`;
+
 
     try {
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: "edubuk.notification@gmail.com",
+                user: "support@edubukeseal.org",
                 pass: process.env.EmailPass,
             },
         });
@@ -119,9 +124,9 @@ export const sendOtpEmail = async (emailId,otp) => {
         // const response = await fetch(resumeFile);
         // const arrayBuffer = await response.arrayBuffer(); // Convert response to ArrayBuffer
         // const buffer = Buffer.from(arrayBuffer); // Convert ArrayBuffer to Buffer
-        const pdfPath = path.resolve(__dirname, "../utils/edubukConsent.pdf");
+        //const pdfPath = path.resolve(__dirname, "../utils/edubukConsent.pdf");
         const info = transporter.sendMail({
-            from: '"Edubuk" <edubuk.notification@gmail.com>',
+            from: '"Edubuk" <support@edubukeseal.org>',
             to: `${emailId}`,
             subject: "Email Verification",
             text: "From edubuk",

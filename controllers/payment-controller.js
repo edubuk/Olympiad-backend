@@ -18,7 +18,7 @@ const instance = new Razorpay({
   key_id: keyId,
   key_secret: keySecret,
 });
-console.log("keyId", keyId)
+//console.log("keyId", keyId)
 export const checkout = async (req, res) => {
   const { amount, curr } = req.body
   try {
@@ -46,9 +46,9 @@ const sendEmail = async (emailId, userName, registeredCode) => {
         <div style="text-align: center;">
           <img src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1743838131332Logo%20with%20name.png?alt=media&token=30ed7206-368a-4c78-8c9a-8a0d029dba32" style="max-width: 120px; margin-bottom: 10px;">
         </div>
-        <img src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1747038548587emailImg.jpg?alt=media&token=3f8a14c9-10f5-4fa7-8a1c-eaa31cd6147b" style="max-width: 650px;">
+        <img src="https://firebasestorage.googleapis.com/v0/b/cv-on-blockchain.appspot.com/o/1748259904657success.png?alt=media&token=90af54a6-fc97-4ddb-bda4-38e0f6fcc487" style="max-width: 650px;">
          <div style="padding: 20px;">
-          <p style="text-align: center; font-size: 1.5rem; font-weight: bold; background: linear-gradient(to right, #03257e, #006666, #F14419); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">REGISTRATION CONFIRMATION - EDUBUK</p>
+          <p style="text-align: center; font-size: 1.5rem; font-weight: bold; color: #03257e;">REGISTRATION CONFIRMATION - EDUBUK</p>
           <p>Greetings from EDUBUK team! <br><br>
  
           Dear <strong>${userName}</strong>,<br><br>
@@ -72,14 +72,14 @@ services.
 team at <strong>support@edubuk.com</strong> or call <strong>+91 9250411261</strong>. </p>
     </div>
         <!-- Signature -->
-        <div style="max-width: 650px; display: flex; justify-content: center; align-items: center; flex-direction:column; color: #ffffff; background-color: #03257E; text-align: center; gap: 10px;">
+        <div style="max-width: 650px; color: #ffffff; background-color: #03257E; text-align: center; gap: 10px; padding: 10px 0;">
         <p>Best Wishes,<br><strong>Team Edubuk</strong></p>
 
-        <div style="display: flex; justify-content:space-around; align-items: center; background-color: #006666; width:100%;">
-        <p>💻 edubukeseal.org</p>
-        <p>📧 support@edubuk.com</p>
-        <p>📞 +91 9250411261</p>
-        </div>
+        <p style="background-color: #006666; width:100%; color: #ffffff; padding: 10px 0;">
+        💻 edubukeseal.org | 
+        📧 support@edubuk.com | 
+        📞 +91 9250411261
+        </p>
         <!-- Footer -->
         <footer style="font-size: 12px; text-align: center;">
           <p>© 2025 EDUBUK. All rights reserved.</p>
@@ -91,13 +91,13 @@ team at <strong>support@edubuk.com</strong> or call <strong>+91 9250411261</stro
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: "edubuk.notification@gmail.com",
+        user: "support@edubukeseal.org",
         pass: process.env.EmailPass,
       },
     });
 
     const info = transporter.sendMail({
-      from: '"Edubuk" <edubuk.notification@gmail.com>',
+      from: '"Edubuk" <support@edubukeseal.org>',
       to: `${emailId}`,
       subject: "Olympiad Registration Code",
       text: "From edubuk",
