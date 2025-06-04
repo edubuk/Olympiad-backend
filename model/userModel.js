@@ -21,7 +21,6 @@ const registrationSchema =  new mongoose.Schema({
     phoneNumber:{
         type:String,
         required:true,
-        unique: true
     },
     city:{
         type:String,

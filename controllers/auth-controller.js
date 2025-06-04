@@ -191,7 +191,7 @@ export const userRegistration = async(req,res)=>{
             })
         }
         const hashedPassword = await bcrypt.hash(password,10);
-        const data = await registration.create({name,email,college,stuClass,phoneNumber,city,country,hashedPassword});
+        const data = await registration.create({name:name,email:email.toLowerCase(),college:college,stuClass:stuClass,phoneNumber:phoneNumber,city:city,country:country,hashedPassword:hashedPassword});
         if(data)
         {
             res.status(200).json({
